@@ -1,3 +1,16 @@
+<?php
+
+require 'vendor/autoload.php';
+
+use benhall14\phpCalendar\Calendar as Calendar;
+
+$calendar = new Calendar;
+$calendar->stylesheet();
+
+(new Calendar)->display();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
