@@ -1,14 +1,5 @@
 <?php
-
-require 'vendor/autoload.php';
-
-use benhall14\phpCalendar\Calendar as Calendar;
-
-$calendar = new Calendar;
-$calendar->stylesheet();
-
-(new Calendar)->display();
-
+require("calendar.php");
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +14,9 @@ $calendar->stylesheet();
   <body>
     <header></header>
     <main>
-      <form action="">
+      <form action="" class="bookingForm">
         <label for="transferCode">Transfer code</label>
-        <input type="text" name="transferCode" />
+        <input type="text" name="transferCode" required="true"/>
         <label for="arrival"></label>
         <input
           type="date"
@@ -44,7 +35,7 @@ $calendar->stylesheet();
         />
         <label for="room"></label>
         <select name="room" required="true">
-          <option value="1">Economy</option>
+          <option value="1">Budget</option>
           <option value="2">Standard</option>
           <option value="3">Luxury</option>
         </select>

@@ -16,3 +16,9 @@ main {
   align-items: center;
   flex-direction: column;
 }
+
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
