@@ -1,7 +1,3 @@
-<?php
-require "calendar.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +10,28 @@ require "calendar.php";
   <body>
     <header></header>
     <main>
-      <form action="" class="bookingForm">
+      <section class="roomsSections">
+        <div class="roomOne">
+          <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
+          <?php
+          require "calendar.php";
+          ?>
+        </div>
+        <div class="roomTwo">
+          <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
+          <?php
+          require "calendar.php";
+          ?>
+        </div>
+        <div class="roomThree">
+          <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
+          <?php
+          require "calendar.php";
+          ?>
+        </div>
+      </section>
+      <section class="datesSection">
+      <form action="payment.php" class="bookingForm">
         <label for="transferCode">Transfer code</label>
         <input type="text" name="transferCode" required="true"/>
         <label for="arrival"></label>
@@ -41,8 +58,10 @@ require "calendar.php";
         </select>
         <button type="submit">Confirm Reservation</button>
       </form>
+      </section>
     </main>
-
     <footer></footer>
   </body>
 </html>
+
+<?php
