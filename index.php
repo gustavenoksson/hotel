@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hotel</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+<?php require "view/header.php"; ?>
   <body>
     <header></header>
     <main>
@@ -31,9 +23,11 @@
         </div>
       </section>
       <section class="datesSection">
-      <form action="payment.php" class="bookingForm">
+      <form action="booking.php" class="bookingForm" method="post">
+        <!-- Transfercode -->
         <label for="transferCode">Transfer code</label>
         <input type="text" name="transferCode" required="true"/>
+        <!-- Dates -->
         <label for="arrival"></label>
         <input
           type="date"
@@ -50,6 +44,7 @@
           max="2023-01-31"
           required="true"
         />
+        <!-- Rooms -->
         <label for="room"></label>
         <select name="room" required="true">
           <option value="1">Budget</option>
@@ -57,11 +52,17 @@
           <option value="3">Luxury</option>
         </select>
         <button type="submit">Confirm Reservation</button>
+        <!-- Features -->
+        <div class="feature">
+          <input type="checkbox" value="1">Dvd Player
+        </div>
+        <div class="feature">
+          <input type="checkbox" value="2">Slippers
+        </div>
+        <div class="feature">
+          <input type="checkbox" value="3">Spa
+        </div>
       </form>
       </section>
     </main>
-    <footer></footer>
-  </body>
-</html>
-
-<?php
+<?php require "view/footer.php";
