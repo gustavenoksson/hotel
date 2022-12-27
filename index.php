@@ -2,6 +2,8 @@
   <body>
     <header></header>
     <main>
+
+      <!-- Rooms section -->
       <section class="roomsSections">
         <div class="roomOne">
           <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
@@ -22,13 +24,15 @@
           ?>
         </div>
       </section>
+
+      <!-- Dates Section -->
       <section class="datesSection">
-      <form action="booking.php" class="bookingForm" method="post">
+      <form action="booking.php" class="bookingForm" method="POST">
         <!-- Transfercode -->
         <label for="transferCode">Transfer code</label>
         <input type="text" name="transferCode" required="true"/>
         <!-- Dates -->
-        <label for="arrival"></label>
+        <label for="arrival">Arrival</label>
         <input
           type="date"
           name="arrival"
@@ -36,7 +40,7 @@
           max="2023-01-31"
           required="true"
         />
-        <label for="departure"></label>
+        <label for="departure">Departure</label>
         <input
           type="date"
           name="departure"
@@ -45,7 +49,7 @@
           required="true"
         />
         <!-- Rooms -->
-        <label for="room"></label>
+        <label for="room">Rooms</label>
         <select name="room" required="true">
           <option value="1">Budget</option>
           <option value="2">Standard</option>
@@ -54,13 +58,14 @@
         <button type="submit">Confirm Reservation</button>
         <!-- Features -->
         <div class="feature">
-          <input type="checkbox" value="1">Dvd Player
+          <input type="checkbox" value="1"
+          name="features[]">Dvd Player
         </div>
         <div class="feature">
-          <input type="checkbox" value="2">Slippers
+          <input type="checkbox" value="2" name="features[]">Slippers
         </div>
         <div class="feature">
-          <input type="checkbox" value="3">Spa
+          <input type="checkbox" value="3" name="features[]">Spa
         </div>
       </form>
       </section>
