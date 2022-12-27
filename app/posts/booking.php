@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-require "hotelFunctions.php";
+require "../hotelFunctions.php";
 
 header('Content-Type: application/json');
 
 function importData() {
 if (isset($_POST["transferCode"], $_POST["arrival"], $_POST["departure"], $_POST["room"])) {
 
-    $db = connect("bookings.db");
+    $db = connect("db/bookings.db");
 
     $transferCode = trim($_POST["transferCode"]);
     $arrival = trim($_POST["arrival"]);
@@ -32,7 +32,7 @@ if (isset($_POST["transferCode"], $_POST["arrival"], $_POST["departure"], $_POST
 
 importData();
 
-$receiptFile = "receipt.json";
+$receiptFile = "../../receipt.json";
 
 $receipt = file_get_contents($receiptFile);
 echo $receipt;

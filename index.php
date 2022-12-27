@@ -27,7 +27,7 @@
 
       <!-- Dates Section -->
       <section class="datesSection">
-      <form action="booking.php" class="bookingForm" method="POST">
+      <form action="app/posts/booking.php" class="bookingForm" method="POST">
         <!-- Transfercode -->
         <label for="transferCode">Transfer code</label>
         <input type="text" name="transferCode" required="true"/>
