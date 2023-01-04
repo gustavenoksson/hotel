@@ -1,4 +1,4 @@
-<?php require "view/header.php"; ?>
+<?php require __DIR__ . "/view/header.php"; ?>
   <body>
     <header></header>
     <main>
@@ -8,19 +8,19 @@
         <div class="roomOne">
           <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
           <?php
-          require "calendar.php";
+          require __DIR__ . "/calendar.php";
           ?>
         </div>
         <div class="roomTwo">
           <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
           <?php
-          require "calendar.php";
+          require __DIR__ . "/calendar.php";
           ?>
         </div>
         <div class="roomThree">
           <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
           <?php
-          require "calendar.php";
+          require __DIR__ . "/calendar.php";
           ?>
         </div>
       </section>
@@ -70,4 +70,4 @@
       </form>
       </section>
     </main>
-<?php require "view/footer.php";
+<?php require __DIR__ . "/view/footer.php";
