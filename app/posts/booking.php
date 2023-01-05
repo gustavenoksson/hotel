@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 require "../hotelFunctions.php";
 
-$arrival = ($_POST["arrival"]);
-$departure = trim($_POST["departure"]);
-$roomId = trim($_POST["room"]);
+isValidDate();
 
 function isValidDate() {
 
@@ -20,15 +18,11 @@ function isValidDate() {
     $dates = $statement->fetchAll();
 
     foreach($dates as $date){
-        // die(var_dump(date("Y-m-d", strtotime($date["arrival_date"]))));
-        // $arrivalDate = date("Y-m-d", strtotime($date["arrival_date"]));
-        // $departureDate = date("Y-m-d", strtotime($date["departure_date"]));
-
         $arrivalDate = $date["arrival_date"];
         $departureDate = $date["departure_date"];
 
         if ($arrival > $arrivalDate && $arrival < $departureDate) {
-            echo $arrival . "is between" . $arrivalDate . $departureDate . "<br>";
+            echo $arrival . "is between" . $arrivalDate . $departureDate;
             break;
         } else {
             importData();
@@ -37,11 +31,13 @@ function isValidDate() {
     };
 };
 
-isValidDate();
-
 function importData() {
     if (isset($_POST["arrival"], $_POST["departure"], $_POST["room"])) {
     $db = connect("db/bookings.db");
+
+    $arrival = ($_POST["arrival"]);
+    $departure = trim($_POST["departure"]);
+    $roomId = trim($_POST["room"]);
 
     $statementBookings = $db->prepare("INSERT INTO bookings (arrival_date, departure_date) VALUES (:arrival_date, :departure_date)");
     $statementRoomId = $db->prepare("INSERT INTO booking_rooms (room_id) VALUES (:room_id)");
@@ -58,6 +54,3 @@ function importData() {
     echo $receipt;
 }
 };
-
-// $statement = $db->query("SELECT arrival_date, departure_date FROM bookings");
-// $dates = $statement->fetchAll();
