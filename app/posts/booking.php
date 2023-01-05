@@ -3,16 +3,13 @@
 declare(strict_types=1);
 
 require "../hotelFunctions.php";
-
-isValidDate();
+header('Content-Type: application/json');
 
 function isValidDate() {
 
     $arrival = trim($_POST["arrival"]);
 
     $db = connect("db/bookings.db");
-
-    $bookedDates = array();
 
     $statement = $db->query("SELECT arrival_date, departure_date FROM bookings");
     $dates = $statement->fetchAll();
@@ -21,7 +18,9 @@ function isValidDate() {
         $arrivalDate = $date["arrival_date"];
         $departureDate = $date["departure_date"];
 
-        if ($arrival > $arrivalDate && $arrival < $departureDate) {
+        echo $arrivalDate;
+
+        if ($arrival >= $arrivalDate && $arrival < $departureDate) {
             echo $arrival . "is between" . $arrivalDate . $departureDate;
             break;
         } else {
@@ -54,3 +53,5 @@ function importData() {
     echo $receipt;
 }
 };
+
+isValidDate();
