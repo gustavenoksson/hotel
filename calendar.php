@@ -6,8 +6,13 @@ require __DIR__ . '/vendor/autoload.php';
 
 use benhall14\phpCalendar\Calendar as Calendar;
 
-$calendar = new Calendar;
-$calendar->stylesheet();
+$budgetCalendar = new Calendar;
+$standardCalendar = new Calendar;
+$luxuryCalendar = new Calendar;
+
+$budgetCalendar->stylesheet();
+$standardCalendar->stylesheet();
+$luxuryCalendar->stylesheet();
 
 $events = array();
 
@@ -25,7 +30,5 @@ $events[] = array(
     'mask' => true
 );
 
-$calendar->addEvents($events);
-
-echo $calendar->draw(date('2023-01-01'));
+$budgetCalendar->addEvents($events);
 ?>

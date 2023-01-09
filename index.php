@@ -1,4 +1,8 @@
-<?php require __DIR__ . "/view/header.php"; ?>
+<?php require __DIR__ . "/view/header.php";
+
+require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . "/calendar.php";
+?>
   <body>
     <header></header>
     <main>
@@ -8,19 +12,19 @@
         <div class="roomOne">
           <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
           <?php
-          require __DIR__ . "/calendar.php";
+          echo $budgetCalendar->draw(date('2023-01-01'));
           ?>
         </div>
         <div class="roomTwo">
           <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
           <?php
-          require __DIR__ . "/calendar.php";
+          echo $standardCalendar->draw(date('2023-01-01'));
           ?>
         </div>
         <div class="roomThree">
           <img class="roomImg" src="images/budgetHotelRoom.jpeg" alt="">
           <?php
-          require __DIR__ . "/calendar.php";
+          echo $luxuryCalendar->draw(date('2023-01-01'));
           ?>
         </div>
       </section>
@@ -32,7 +36,7 @@
         <label for="transferCode">Transfer code</label>
         <input type="text" name="transferCode" required="true"/>
         <!-- Dates -->
-        <label for="arrival">Arrival</label>
+        <label for="arrival" id="arrival">Arrival</label>
         <input
           type="date"
           name="arrival"
@@ -40,7 +44,7 @@
           max="2023-01-31"
           required="true"
         />
-        <label for="departure">Departure</label>
+        <label for="departure" id="departure">Departure</label>
         <input
           type="date"
           name="departure"
