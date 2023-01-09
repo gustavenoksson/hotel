@@ -5,6 +5,7 @@ declare(strict_types=1);
 require "../hotelFunctions.php";
 header('Content-Type: application/json');
 
+// Function to check if date is avaible for booking.
 function isValidDate() {
 
     $db = connect("db/bookings.db");
@@ -18,16 +19,12 @@ function isValidDate() {
         $arrivalDate = $date["arrival_date"];
         $departureDate = $date["departure_date"];
 
-        echo $arrivalDate;
-
         if ($arrival >= $arrivalDate && $arrival < $departureDate) {
-            echo $arrival . "is between" . $arrivalDate . $departureDate;
-            break;
-        } else {
-            importData();
-            break;
+            echo $arrival . " is between " . $arrivalDate . $departureDate;
+            die();
         }
     };
+    importData();
 };
 
 function importData() {
