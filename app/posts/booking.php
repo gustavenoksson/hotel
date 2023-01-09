@@ -20,7 +20,7 @@ function isValidDate() {
         $departureDate = $date["departure_date"];
 
         if ($arrival >= $arrivalDate && $arrival < $departureDate) {
-            echo $arrival . " is between " . $arrivalDate . $departureDate;
+            echo $arrival . " is between " . $arrivalDate . " & ". $departureDate;
             die();
         }
     };
@@ -31,7 +31,11 @@ function importData() {
     if (isset($_POST["arrival"], $_POST["departure"], $_POST["room"])) {
     $db = connect("db/bookings.db");
 
-    $arrival = ($_POST["arrival"]);
+    htmlspecialchars($_POST["arrival"]);
+    htmlspecialchars($_POST["departure"]);
+    htmlspecialchars($_POST["room"]);
+
+    $arrival = trim($_POST["arrival"]);
     $departure = trim($_POST["departure"]);
     $roomId = trim($_POST["room"]);
 
@@ -52,3 +56,7 @@ function importData() {
 };
 
 isValidDate();
+
+function calculateTotalAmount(){
+
+}

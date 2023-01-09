@@ -16,11 +16,10 @@ function checkTransferCode(){
     $client = new Client([
         'base_uri' => 'https://www.yrgopelago.se/test/index.php'
     ]);
-    
+
     $response = $client->request('POST', 'https://www.yrgopelago.se/centralbank/transferCode', [
         'form_params' => [
             'transfercode' => $transferCode,
         ]
     ]);
-
 }

@@ -36,21 +36,23 @@ require __DIR__ . "/calendar.php";
         <label for="transferCode">Transfer code</label>
         <input type="text" name="transferCode" required="true"/>
         <!-- Dates -->
-        <label for="arrival" id="arrival">Arrival</label>
+        <label for="arrival">Arrival</label>
         <input
           type="date"
           name="arrival"
           min="2023-01-01"
           max="2023-01-31"
           required="true"
+          id="arrival"
         />
-        <label for="departure" id="departure">Departure</label>
+        <label for="departure">Departure</label>
         <input
           type="date"
           name="departure"
           min="2023-01-01"
           max="2023-01-31"
           required="true"
+          id="departure"
         />
         <!-- Rooms -->
         <label for="room">Rooms</label>

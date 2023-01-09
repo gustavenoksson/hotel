@@ -7,4 +7,10 @@ let departureDate = document.getElementById('departure').value;
 const totalAmount = document.createElement('p');
 totalAmount.textContent = arrivalDate + departureDate;
 
-main.appendChild.totalAmount;
+totalAmount.textContent = arrivalDate;
+
+function onChangeHandler(val) {
+  console.log(val);
+}
+
+onChangeHandler(arrivalDate);
