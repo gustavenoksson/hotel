@@ -7,9 +7,9 @@ header('Content-Type: application/json');
 
 function isValidDate() {
 
-    $arrival = trim($_POST["arrival"]);
-
     $db = connect("db/bookings.db");
+
+    $arrival = trim($_POST["arrival"]);
 
     $statement = $db->query("SELECT arrival_date, departure_date FROM bookings");
     $dates = $statement->fetchAll();
