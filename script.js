@@ -8,6 +8,11 @@ const calcPrice = () => {
   const totalDays =
     departureDate.split('-').pop() - arrivalDate.split('-').pop();
   const roomId = roomSelect.options[roomSelect.selectedIndex].value;
+  const totalAmountInput = document.getElementById('totalAmount');
+
+  const featureOne = document.getElementById('dvdPlayer');
+  const featureTwo = document.getElementById('slippers');
+  const featureThree = document.getElementById('spa');
 
   let roomPrice;
   if (roomId == 1) {
@@ -18,13 +23,20 @@ const calcPrice = () => {
     roomPrice = 3;
   }
 
+  if (featureOne.checked) {
+    roomPrice + featureOne.value;
+  } else if (featureTwo.checked) {
+    roomPrice + featureTwo.value;
+  } else if (featureThree.checked) {
+    roomPrice + featureThree.value;
+  }
+
   if (totalDays < 0) {
     roomPrice = 0;
   }
 
   const totalAmount = roomPrice * totalDays;
-
-  document.getElementById('totalAmount').value = totalAmount;
+  totalAmountInput.value = totalAmount;
 };
 
 form.addEventListener('change', () => {

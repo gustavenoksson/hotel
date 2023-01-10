@@ -65,13 +65,13 @@ require __DIR__ . "/calendar.php";
           <!-- Features -->
           <div class="feature">
             <input type="checkbox" value="1"
-            name="features[]">Dvd Player
+            name="features[]" id="dvdPlayer">Dvd Player
           </div>
           <div class="feature">
-            <input type="checkbox" value="2" name="features[]">Slippers
+            <input type="checkbox" value="2" name="features[]" id="slippers">Slippers
           </div>
           <div class="feature">
-            <input type="checkbox" value="3" name="features[]">Spa
+            <input type="checkbox" value="3" name="features[]" id="spa">Spa
           </div>
           <label for="totalAmount">Total Amount:</label>
           <input name="totalAmount" type="text" readonly id="totalAmount">

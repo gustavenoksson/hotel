@@ -9,8 +9,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
 function checkTransferCode(){
-    htmlspecialchars($_POST["transfercode"]);
-    $transferCode = $_POST["transfercode"];
+
+    $transferCode = htmlspecialchars($_POST["transfercode"]);
 
     $client = new Client([
         'base_uri' => 'https://www.yrgopelago.se/test/index.php'
