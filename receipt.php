@@ -2,8 +2,6 @@
 
 header('Content-Type: application/json');
 
-
-
 $vacation = [
   "island" => "The Yellow Duck Island",
   "hotel" => "The Yellow Duck",

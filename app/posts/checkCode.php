@@ -9,7 +9,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
 function checkTransferCode(){
-    
     htmlspecialchars($_POST["transfercode"]);
     $transferCode = $_POST["transfercode"];
 

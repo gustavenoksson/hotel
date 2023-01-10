@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . "/app/hotelFunctions.php";
 
 use benhall14\phpCalendar\Calendar as Calendar;
 
@@ -16,19 +17,21 @@ $luxuryCalendar->stylesheet();
 
 $events = array();
 
-$events[] = array(
-    'start' => '2023-01-11',
-    'end' => '2023-01-16',
-    'mask' => true,
-    'classes' => ['myclass', 'abc']
-);
+function updateCalendar($calendar, $id) {
 
-$events[] = array(
-    'start' => '2022-12-25',
-    'end' => '2022-12-25',
-    'summary' => 'Christmas',
-    'mask' => true
-);
+    $db = connect("db/bookings.db");
 
-$budgetCalendar->addEvents($events);
+    $statement = $db->query("SELECT arrival_date, departure_date FROM bookings WHERE room_id = $id");
+    $bookedBudgetDates = $statement->fetchAll();
+
+    foreach ($bookedBudgetDates as $bookedBudgetDate){
+    $arrivalDate = $bookedBudgetDate["arrival_date"];
+    $departureDate = $bookedBudgetDate["departure_date"];
+    $calendar->addEvent($arrivalDate, $departureDate, '', true);
+    }
+};
+
+updateCalendar($budgetCalendar, 1);
+updateCalendar($standardCalendar, 2);
+updateCalendar($luxuryCalendar, 3);
 ?>

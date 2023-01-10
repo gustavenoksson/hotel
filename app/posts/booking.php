@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-require "../hotelFunctions.php";
-header('Content-Type: application/json');
+require __DIR__ . "../../hotelFunctions.php";
 
 // Function to check if date is avaible for booking.
 function isValidDate() {
@@ -25,7 +24,7 @@ function isValidDate() {
         $dbroomId = $booking["room_id"];
 
         if ($arrival >= $dbarrivalDate && $arrival < $dbdepartureDate) {
-            echo $arrival . " is between " . $dbarrivalDate . " & ". $dbdepartureDate;
+            echo "Sorry " . $arrival . " is between " . $dbarrivalDate . " & ". $dbdepartureDate;
             die();
         };
     };
@@ -50,8 +49,22 @@ function importData() {
 
     $statementBookings->execute();
 
-    header("Location: ../../receipt.php");
+    // header("Location: ../../receipt.php");
 }
+};
+
+function updateCalendar($calendar, $id) {
+
+    $db = connect("db/bookings.db");
+
+    $statement = $db->query("SELECT arrival_date, departure_date FROM bookings WHERE room_id = $id");
+    $bookedBudgetDates = $statement->fetchAll();
+
+    foreach ($bookedBudgetDates as $bookedBudgetDate){
+    $arrivalDate = $bookedBudgetDate["arrival_date"];
+    $departureDate = $bookedBudgetDate["departure_date"];
+    $calendar->addEvent($arrivalDate, $departureDate, '', true);
+    }
 };
 
 isValidDate();
