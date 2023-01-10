@@ -11,17 +11,21 @@ function isValidDate() {
     $db = connect("db/bookings.db");
 
     $arrival = trim(htmlspecialchars($_POST["arrival"]));
+    $roomId = trim(htmlspecialchars($_POST["room"]));
 
-    $statement = $db->query("SELECT arrival_date, departure_date, room_id FROM bookings");
+    $statement = $db->prepare("SELECT arrival_date, departure_date, room_id FROM bookings WHERE room_id IS :room_id");
+
+    $statement->bindParam(":room_id", $roomId);
+    $statement->execute();
     $bookings = $statement->fetchAll();
 
     foreach($bookings as $booking){
-        $arrivalDate = $booking["arrival_date"];
-        $departureDate = $booking["departure_date"];
-        $roomId = $booking["room_id"];
+        $dbarrivalDate = $booking["arrival_date"];
+        $dbdepartureDate = $booking["departure_date"];
+        $dbroomId = $booking["room_id"];
 
-        if ($arrival >= $arrivalDate && $arrival < $departureDate) {
-            echo $arrival . " is between " . $arrivalDate . " & ". $departureDate;
+        if ($arrival >= $dbarrivalDate && $arrival < $dbdepartureDate) {
+            echo $arrival . " is between " . $dbarrivalDate . " & ". $dbdepartureDate;
             die();
         };
     };
