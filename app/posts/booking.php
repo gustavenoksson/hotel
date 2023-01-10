@@ -27,6 +27,7 @@ function isValidDate() {
     importData();
 };
 
+// Function to import users inputs into database.
 function importData() {
     if (isset($_POST["arrival"], $_POST["departure"], $_POST["room"])) {
 
@@ -40,30 +41,15 @@ function importData() {
     $departure = trim($_POST["departure"]);
     $roomId = trim($_POST["room"]);
 
-    $statementBookings = $db->prepare("INSERT INTO bookings (arrival_date, departure_date) VALUES (:arrival_date, :departure_date)");
-    $statementRoomId = $db->prepare("INSERT INTO booking_rooms (room_id) VALUES (:room_id)");
+    $statementBookings = $db->prepare("INSERT INTO bookings (arrival_date, departure_date, room_id) VALUES (:arrival_date, :departure_date, :room_id)");
 
     $statementBookings->bindParam(':arrival_date', $arrival);
     $statementBookings->bindParam(':departure_date', $departure);
-    $statementRoomId->bindParam(':room_id', $roomId);
+    $statementBookings->bindParam(':room_id', $roomId);
 
     $statementBookings->execute();
-    $statementRoomId->execute();
 
-    $statementBookingId = $db->query("SELECT id FROM bookings ORDER BY id DESC LIMIT 1");
-    $bookingId = $statementBookingId->fetch();
-
-    $statmentRoomTable = $db->prepare("INSERT INTO booking_rooms (booking_id) VALUES (:booking_id)");
-    $statementRoomTable->bindParam(":booking_id", $bookingId["id"]);
-
-    $statementRoomTable->execute();
-
-    // Efter execute ta id från booking och lägg i booking_rooms (booking_id) från en funktion (addFeatures()/addRooms()).
-    // addFeatures loopar igenom alla features.
-
-    $receiptFile = "../../receipt.json";
-    $receipt = file_get_contents($receiptFile);
-    echo $receipt;
+    header("Location: ../../receipt.php");
 }
 };
 
