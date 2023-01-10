@@ -56,7 +56,7 @@ require __DIR__ . "/calendar.php";
           />
           <!-- Rooms -->
           <label for="room">Rooms</label>
-          <select name="room" required="true">
+          <select name="room" required="true" id="room">
             <option value="1">Budget</option>
             <option value="2">Standard</option>
             <option value="3">Luxury</option>

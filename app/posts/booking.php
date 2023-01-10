@@ -27,6 +27,10 @@ function isValidDate() {
             echo "Sorry " . $arrival . " is between " . $dbarrivalDate . " & ". $dbdepartureDate;
             die();
         };
+        if ($dbdepartureDate > $dbarrivalDate){
+            echo "Departure date need to be after arrival";
+            die();
+        }
     };
     importData();
 };
