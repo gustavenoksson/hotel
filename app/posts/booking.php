@@ -29,6 +29,7 @@ function isValidDate() {
 
 function importData() {
     if (isset($_POST["arrival"], $_POST["departure"], $_POST["room"])) {
+
     $db = connect("db/bookings.db");
 
     htmlspecialchars($_POST["arrival"]);
@@ -49,6 +50,17 @@ function importData() {
     $statementBookings->execute();
     $statementRoomId->execute();
 
+    $statementBookingId = $db->query("SELECT id FROM bookings ORDER BY id DESC LIMIT 1");
+    $bookingId = $statementBookingId->fetch();
+
+    $statmentRoomTable = $db->prepare("INSERT INTO booking_rooms (booking_id) VALUES (:booking_id)");
+    $statementRoomTable->bindParam(":booking_id", $bookingId["id"]);
+
+    $statementRoomTable->execute();
+
+    // Efter execute ta id från booking och lägg i booking_rooms (booking_id) från en funktion (addFeatures()/addRooms()).
+    // addFeatures loopar igenom alla features.
+
     $receiptFile = "../../receipt.json";
     $receipt = file_get_contents($receiptFile);
     echo $receipt;
@@ -56,7 +68,3 @@ function importData() {
 };
 
 isValidDate();
-
-function calculateTotalAmount(){
-
-}

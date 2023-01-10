@@ -73,6 +73,8 @@ require __DIR__ . "/calendar.php";
         <div class="feature">
           <input type="checkbox" value="3" name="features[]">Spa
         </div>
+        <label for="totalAmount">Total Amount:</label>
+        <input name="totalAmount" type="text" readonly id="totalAmount">
       </form>
       </section>
     </main>
