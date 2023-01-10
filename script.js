@@ -8,9 +8,3 @@ const totalAmount = document.createElement('p');
 totalAmount.textContent = arrivalDate + departureDate;
 
 totalAmount.textContent = arrivalDate;
-
-function onChangeHandler(val) {
-  console.log(val);
-}
-
-onChangeHandler(arrivalDate);
