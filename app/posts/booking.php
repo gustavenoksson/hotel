@@ -40,10 +40,11 @@ function isValidDate() {
             die();
         }
     };
+    // When date is checked by function, check the transfercode. If ok run functions to import data and deposit funds. Take user to receipt.php.
         if (checkTransferCode($transferCode, $totalAmount)) {
         importData();
         depositFunds($transferCode);
-        // header("Location: ../../receipt.php");
+        header("Location: ../../receipt.php");
         }
 };
 
@@ -67,6 +68,7 @@ function importData() {
 }
 };
 
+// Updates the calender on index.php based on room id.
 function updateCalendar($calendar, $id) {
 
     $db = connect("db/bookings.db");
@@ -81,6 +83,7 @@ function updateCalendar($calendar, $id) {
     }
 };
 
+// Check if transfercode 
 function checkTransferCode($transferCode, $totalAmount){
 
     if(!isValidUuid($transferCode)) {
@@ -106,7 +109,7 @@ function checkTransferCode($transferCode, $totalAmount){
         echo "Sorry you do not have sufficent funds";
         return false;
     }
-    
+
     return true;
 }
 
