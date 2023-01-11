@@ -91,7 +91,7 @@ require __DIR__ . "/calendar.php";
           </select>
           <!-- Total Amount -->
           <label for="totalAmount">Total Amount:</label>
-          <input name="totalAmount" type="text" readonly id="totalAmount">
+          <input name="totalAmount" type="text" readonly id="totalAmount" class="totalAmount">
           <button type="submit" class="submitBtn">Confirm Reservation</button>
         </form>
       </section>

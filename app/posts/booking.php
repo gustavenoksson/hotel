@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+session_start();
 
 require __DIR__ . "../../hotelFunctions.php";
 require "../../vendor/autoload.php";
@@ -20,6 +21,10 @@ function isValidDate() {
     $roomId = trim(htmlspecialchars($_POST["room"]));
     $transferCode = trim(htmlspecialchars($_POST["transferCode"]));
     $totalAmount = trim(htmlspecialchars($_POST["totalAmount"]));
+
+    $_SESSION["arrival"] = $arrival;
+    $_SESSION["departure"] = $departure;
+    $_SESSION["totalAmount"] = $totalAmount;
 
     $statement = $db->prepare("SELECT arrival_date, departure_date, room_id FROM bookings WHERE room_id IS :room_id");
 
