@@ -86,15 +86,15 @@ function checkTransferCode($transferCode, $totalAmount){
     if(!isValidUuid($transferCode)) {
         echo "Sorry this transfercode is not valid.";
         return false;
-    } else {
+    }
+    
         $client = new GuzzleHttp\Client();
         $options = [
             'form_params' => [
                 "transferCode" => $transferCode, "totalCost" => $totalAmount
             ]
         ];
-        return true;
-    }
+
     try {
         $response = $client->POST('https://www.yrgopelago.se/centralbank/transferCode', $options);
         $response = $response->getBody()->getContents();
@@ -102,6 +102,12 @@ function checkTransferCode($transferCode, $totalAmount){
     } catch (\Exception $e) {
         echo "Could not connect to desired API" . $e;
     }
+    if (!isset($response["amount"]) || $totalAmount > $response["amount"]) {
+        echo "Sorry you do not have sufficent funds";
+        return false;
+    }
+    
+    return true;
 }
 
 function depositFunds ($transferCode) {
