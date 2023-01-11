@@ -2,8 +2,6 @@
 
 header('Content-Type: application/json');
 
-function printReciept() {
-
 $vacation = [
   "island" => "The Yellow Duck Island",
   "hotel" => "The Yellow Duck",
@@ -17,6 +15,3 @@ $vacation = [
 $receipt = json_encode($vacation);
 
 echo $receipt;
-};
-
-printReciept();

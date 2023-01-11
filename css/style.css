@@ -1,12 +1,48 @@
+:root {
+  --background-color-yellow: rgb(251, 241, 47);
+  --font-color-red: rgb(255, 0, 0);
+  --font-color-white: white;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
 }
 
+body {
+  background-color: orange;
+  color: var(--font-color-white);
+  font-family: 'Acme', sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* header */
 header {
   width: 100%;
-  height: 50px;
-  background-color: tomato;
+  height: auto;
+  background-color: var(--background-color-yellow);
+  position: relative;
+  border-bottom: 10px solid rgb(253, 0, 0);
+}
+
+header h1 {
+  display: flex;
+  justify-content: center;
+  font-family: 'Barrio', cursive;
+  color: var(--font-color-red);
+  font-size: 150px;
+  padding-top: 30px;
+  transform: rotate(-2deg);
+}
+
+.yellowDuckFront {
+  bottom: -45;
+  right: 200;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  transform: rotate(5deg);
 }
 
 main {
@@ -14,30 +50,110 @@ main {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
   gap: 20px;
 }
 
-/* dateSection */
-.dateSection {
+/* About section */
+.aboutSection {
+  height: 450px;
+  width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.aboutBox {
+  height: 80%;
+  width: 80%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.aboutTextBox {
+  width: 30%;
+}
+
+.aboutTextBox h2 {
+  font-family: 'Barrio', cursive;
+  font-size: 60px;
+  color: white;
+  transform: rotate(1deg);
+}
+
+.aboutTextBox p {
+  color: white;
+  font-size: 22px;
+}
+
+.aboutBox img {
+  height: 90%;
+  width: 50%;
+  border-radius: 12px;
+}
+
+/* Date section */
 .bookingForm {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
 }
 
-/* roomsSection */
+.bookingForm input {
+  width: 150px;
+}
 
-.roomOne,
-.roomTwo,
-.roomThree {
+/* Rooms section */
+.roomOne {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.roomTwo {
   display: flex;
 }
 
+.roomThree {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .roomImg {
-  width: 250px;
-  height: 250px;
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+
+.priceShowcase {
+  position: absolute;
+  background-color: var(--background-color-yellow);
+  margin-top: 15px;
+  border-radius: 2px;
+  right: 25;
+  font-size: 25px;
+  color: var(--font-color-red);
+}
+
+.showcaseStandard {
+  left: 25;
+  right: auto;
+}
+
+/* footer */
+footer {
+  height: 100px;
+  background-color: var(--background-color-yellow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+footer p {
+  font-family: 'Barrio', cursive;
+  color: var(--font-color-red);
+  font-size: 18px;
 }

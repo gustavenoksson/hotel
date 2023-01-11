@@ -68,21 +68,6 @@ function importData() {
 }
 };
 
-// Updates the calender on index.php based on room id.
-function updateCalendar($calendar, $id) {
-
-    $db = connect("db/bookings.db");
-
-    $statement = $db->query("SELECT arrival_date, departure_date FROM bookings WHERE room_id = $id");
-    $bookedBudgetDates = $statement->fetchAll();
-
-    foreach ($bookedDates as $bookedDate){
-    $arrivalDate = $bookedDate["arrival_date"];
-    $departureDate = $bookedDate["departure_date"];
-    $calendar->addEvent($arrivalDate, $departureDate, '', true);
-    }
-};
-
 // Function to check if transfercode valid
 function checkTransferCode($transferCode, $totalAmount){
 

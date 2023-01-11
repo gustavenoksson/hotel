@@ -17,16 +17,17 @@ $luxuryCalendar->stylesheet();
 
 $events = array();
 
+// Updates the calender on index.php based on room id.
 function updateCalendar($calendar, $id) {
 
     $db = connect("db/bookings.db");
 
     $statement = $db->query("SELECT arrival_date, departure_date FROM bookings WHERE room_id = $id");
-    $bookedBudgetDates = $statement->fetchAll();
+    $bookedDates = $statement->fetchAll();
 
-    foreach ($bookedBudgetDates as $bookedBudgetDate){
-    $arrivalDate = $bookedBudgetDate["arrival_date"];
-    $departureDate = $bookedBudgetDate["departure_date"];
+    foreach ($bookedDates as $bookedDate){
+    $arrivalDate = $bookedDate["arrival_date"];
+    $departureDate = $bookedDate["departure_date"];
     $calendar->addEvent($arrivalDate, $departureDate, '', true);
     }
 };
