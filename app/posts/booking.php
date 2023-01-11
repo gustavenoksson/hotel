@@ -3,6 +3,10 @@
 declare(strict_types=1);
 
 require __DIR__ . "../../hotelFunctions.php";
+require "vendor/autoload.php";
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 // Function to check if date is avaible for booking.
 function isValidDate() {
@@ -53,7 +57,7 @@ function importData() {
 
     $statementBookings->execute();
 
-    // header("Location: ../../receipt.php");
+    header("Location: ../../receipt.php");
 }
 };
 
@@ -70,5 +74,31 @@ function updateCalendar($calendar, $id) {
     $calendar->addEvent($arrivalDate, $departureDate, '', true);
     }
 };
+
+function checkTransferCode(){
+
+    $transferCode = trim(htmlspecialchars($_POST["transfercode"]));
+    $totalAmount = trim(htmlspecialchars($_POST["totalAmount"]));
+
+    if(!isValidUuid($transferCode)) {
+        echo "Sorry this transfercode is not valid.";
+        return false;
+    } else {
+        $client = new GuzzleHttp\Client();
+        $options = [
+            'form_params' => [
+                "transfercode" => $transferCode, "totalcost" => $totalAmount
+            ]
+        ];
+    }
+
+    try {
+        $response = $client->POST('https://www.yrgopelago.se/centralbank/transferCode', $options);
+        $response = $response->getBody()->getContents();
+        $response = json_decode($response, true);
+    } catch (\Exception $e) {
+        return "Could not connect to desired API" . $e;
+    }
+}
 
 isValidDate();
