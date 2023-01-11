@@ -43,6 +43,7 @@ function isValidDate() {
         if (checkTransferCode($transferCode, $totalAmount)) {
         importData();
         depositFunds($transferCode);
+        // header("Location: ../../receipt.php");
         }
 };
 
@@ -63,8 +64,6 @@ function importData() {
     $statementBookings->bindParam(':room_id', $roomId);
 
     $statementBookings->execute();
-
-    header("Location: ../../receipt.php");
 }
 };
 
@@ -96,7 +95,6 @@ function checkTransferCode($transferCode, $totalAmount){
         ];
         return true;
     }
-
     try {
         $response = $client->POST('https://www.yrgopelago.se/centralbank/transferCode', $options);
         $response = $response->getBody()->getContents();
@@ -116,13 +114,12 @@ function depositFunds ($transferCode) {
         ]
     ];
     try {
-        $response = $client->post('https://www.yrgopelago.se/centralbank/deposit', $options);
+        $response = $client->POST('https://www.yrgopelago.se/centralbank/deposit', $options);
         $response = $response->getBody()->getContents();
         $response = json_decode($response, true);
-        return true;
     } catch (\Exception $e) {
         echo "Something went wrong, money not deposited." . $e;
-    }
+    };
 };
 
 isValidDate();
