@@ -74,9 +74,9 @@ function updateCalendar($calendar, $id) {
     $statement = $db->query("SELECT arrival_date, departure_date FROM bookings WHERE room_id = $id");
     $bookedBudgetDates = $statement->fetchAll();
 
-    foreach ($bookedBudgetDates as $bookedBudgetDate){
-    $arrivalDate = $bookedBudgetDate["arrival_date"];
-    $departureDate = $bookedBudgetDate["departure_date"];
+    foreach ($bookedDates as $bookedDate){
+    $arrivalDate = $bookedDate["arrival_date"];
+    $departureDate = $bookedDate["departure_date"];
     $calendar->addEvent($arrivalDate, $departureDate, '', true);
     }
 };
