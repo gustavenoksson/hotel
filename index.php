@@ -85,14 +85,14 @@ require __DIR__ . "/calendar.php";
           <!-- Rooms -->
           <label for="room">Rooms</label>
           <select name="room" required="true" id="room">
-            <option value="1">Budget</option>
-            <option value="2">Standard</option>
-            <option value="3">Luxury</option>
+            <option value="1">Budget 1$</option>
+            <option value="2">Standard 2$</option>
+            <option value="3">Luxury 3$</option>
           </select>
-          <button type="submit">Confirm Reservation</button>
           <!-- Total Amount -->
           <label for="totalAmount">Total Amount:</label>
           <input name="totalAmount" type="text" readonly id="totalAmount">
+          <button type="submit" class="submitBtn">Confirm Reservation</button>
         </form>
       </section>
     </main>

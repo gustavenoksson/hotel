@@ -93,19 +93,6 @@ main {
   border-radius: 12px;
 }
 
-/* Date section */
-.bookingForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
-.bookingForm input {
-  width: 150px;
-}
-
 /* Rooms section */
 .roomOne {
   display: flex;
@@ -140,6 +127,32 @@ main {
 .showcaseStandard {
   left: 25;
   right: auto;
+}
+
+/* Date section */
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.bookingForm input,
+select {
+  width: 250px;
+  font-family: 'Acme', sans-serif;
+}
+
+.submitBtn {
+  background-color: var(--font-color-red);
+  cursor: pointer;
+  color: var(--font-color-white);
+  border: 1px solid var(--font-color-white);
+  border-radius: 15px;
+  height: 40px;
+  width: 150px;
+  font-family: 'Acme', sans-serif;
 }
 
 /* footer */
