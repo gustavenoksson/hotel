@@ -83,7 +83,7 @@ function updateCalendar($calendar, $id) {
     }
 };
 
-// Check if transfercode 
+// Function to check if transfercode valid
 function checkTransferCode($transferCode, $totalAmount){
 
     if(!isValidUuid($transferCode)) {
@@ -105,6 +105,7 @@ function checkTransferCode($transferCode, $totalAmount){
     } catch (\Exception $e) {
         echo "Could not connect to desired API" . $e;
     }
+    // Check $response for "amount" key and if the total cost of the booking is higher than what the key has.
     if (!isset($response["amount"]) || $totalAmount > $response["amount"]) {
         echo "Sorry you do not have sufficent funds";
         return false;
@@ -113,6 +114,7 @@ function checkTransferCode($transferCode, $totalAmount){
     return true;
 }
 
+// Function to deposit funds into my bank via transfercode.
 function depositFunds ($transferCode) {
 
     $client = new \GuzzleHttp\Client();
@@ -130,5 +132,5 @@ function depositFunds ($transferCode) {
         echo "Something went wrong, money not deposited." . $e;
     };
 };
-
+    
 isValidDate();
