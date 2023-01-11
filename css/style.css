@@ -147,14 +147,19 @@ select {
 }
 
 .submitBtn {
-  background-color: var(--font-color-red);
+  background-color: rgb(78, 116, 237);
   cursor: pointer;
   color: var(--font-color-white);
   border: 1px solid var(--font-color-white);
-  border-radius: 15px;
   height: 40px;
-  width: 150px;
+  width: 250px;
   font-family: 'Acme', sans-serif;
+  font-size: 16px;
+  transition: 1s ease;
+}
+
+.submitBtn:hover {
+  scale: 1.03;
 }
 
 /* footer */

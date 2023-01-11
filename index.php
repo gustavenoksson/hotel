@@ -38,21 +38,21 @@ require __DIR__ . "/calendar.php";
           <img class="roomImg" src="images/budgetRoom.jpg" alt="">
           <p class="priceShowcase">Budget 1$</p>
           <?php
-          echo $budgetCalendar->draw(date('2023-01-01'),"green");
+          echo $budgetCalendar->draw(date('2023-01-01'),"blue");
           ?>
         </div>
         <div class="roomTwo">
           <img class="roomImg" src="images/standardRoom.jpg" alt="">
           <p class="priceShowcase showcaseStandard">Standard 2$</p>
           <?php
-          echo $standardCalendar->draw(date('2023-01-01'),"green");
+          echo $standardCalendar->draw(date('2023-01-01'),"blue");
           ?>
         </div>
         <div class="roomThree">
           <img class="roomImg" src="images/luxuryRoom.jpg" alt="">
           <p class="priceShowcase">Luxury 3$</p>
           <?php
-          echo $luxuryCalendar->draw(date('2023-01-01'), "green");
+          echo $luxuryCalendar->draw(date('2023-01-01'), "blue");
           ?>
         </div>
       </section>
