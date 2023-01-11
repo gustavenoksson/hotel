@@ -23,14 +23,6 @@ const calcPrice = () => {
     roomPrice = 3;
   }
 
-  if (featureOne.checked) {
-    roomPrice + featureOne.value;
-  } else if (featureTwo.checked) {
-    roomPrice + featureTwo.value;
-  } else if (featureThree.checked) {
-    roomPrice + featureThree.value;
-  }
-
   if (totalDays < 0) {
     roomPrice = 0;
   }

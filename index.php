@@ -62,17 +62,7 @@ require __DIR__ . "/calendar.php";
             <option value="3">Luxury</option>
           </select>
           <button type="submit">Confirm Reservation</button>
-          <!-- Features -->
-          <div class="feature">
-            <input type="checkbox" value="1"
-            name="features[]" id="dvdPlayer">Dvd Player
-          </div>
-          <div class="feature">
-            <input type="checkbox" value="2" name="features[]" id="slippers">Slippers
-          </div>
-          <div class="feature">
-            <input type="checkbox" value="3" name="features[]" id="spa">Spa
-          </div>
+          <!-- Total Amount -->
           <label for="totalAmount">Total Amount:</label>
           <input name="totalAmount" type="text" readonly id="totalAmount">
         </form>

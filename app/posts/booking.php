@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 require __DIR__ . "../../hotelFunctions.php";
-require "vendor/autoload.php";
+require "../../vendor/autoload.php";
+
+header('Content-Type: application/json');
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
@@ -14,7 +16,10 @@ function isValidDate() {
     $db = connect("db/bookings.db");
 
     $arrival = trim(htmlspecialchars($_POST["arrival"]));
+    $departure = trim(htmlspecialchars($_POST["departure"]));
     $roomId = trim(htmlspecialchars($_POST["room"]));
+    $transferCode = trim(htmlspecialchars($_POST["transferCode"]));
+    $totalAmount = trim(htmlspecialchars($_POST["totalAmount"]));
 
     $statement = $db->prepare("SELECT arrival_date, departure_date, room_id FROM bookings WHERE room_id IS :room_id");
 
@@ -23,20 +28,22 @@ function isValidDate() {
     $bookings = $statement->fetchAll();
 
     foreach($bookings as $booking){
-        $dbarrivalDate = $booking["arrival_date"];
-        $dbdepartureDate = $booking["departure_date"];
-        $dbroomId = $booking["room_id"];
+        $dbArrivalDate = $booking["arrival_date"];
+        $dbDepartureDate = $booking["departure_date"];
 
-        if ($arrival >= $dbarrivalDate && $arrival < $dbdepartureDate) {
-            echo "Sorry " . $arrival . " is between " . $dbarrivalDate . " & ". $dbdepartureDate;
+        if ($arrival >= $dbArrivalDate && $arrival < $dbDepartureDate) {
+            echo "Sorry " . $arrival . " is between " . $dbArrivalDate . " & ". $dbDepartureDate;
             die();
         };
-        if ($dbdepartureDate > $dbarrivalDate){
-            echo "Departure date need to be after arrival";
+        if ($arrival > $departure){
+            echo "Departure date need to be after arrival.";
             die();
         }
     };
-    importData();
+        if (checkTransferCode($transferCode, $totalAmount)) {
+        importData();
+        depositFunds($transferCode);
+        }
 };
 
 // Function to import users inputs into database.
@@ -75,10 +82,7 @@ function updateCalendar($calendar, $id) {
     }
 };
 
-function checkTransferCode(){
-
-    $transferCode = trim(htmlspecialchars($_POST["transfercode"]));
-    $totalAmount = trim(htmlspecialchars($_POST["totalAmount"]));
+function checkTransferCode($transferCode, $totalAmount){
 
     if(!isValidUuid($transferCode)) {
         echo "Sorry this transfercode is not valid.";
@@ -87,9 +91,10 @@ function checkTransferCode(){
         $client = new GuzzleHttp\Client();
         $options = [
             'form_params' => [
-                "transfercode" => $transferCode, "totalcost" => $totalAmount
+                "transferCode" => $transferCode, "totalCost" => $totalAmount
             ]
         ];
+        return true;
     }
 
     try {
@@ -97,8 +102,27 @@ function checkTransferCode(){
         $response = $response->getBody()->getContents();
         $response = json_decode($response, true);
     } catch (\Exception $e) {
-        return "Could not connect to desired API" . $e;
+        echo "Could not connect to desired API" . $e;
     }
 }
+
+function depositFunds ($transferCode) {
+
+    $client = new \GuzzleHttp\Client();
+    $options = [
+        'form_params' => [
+            'user' => 'Gustav',
+            'transferCode' => $transferCode
+        ]
+    ];
+    try {
+        $response = $client->post('https://www.yrgopelago.se/centralbank/deposit', $options);
+        $response = $response->getBody()->getContents();
+        $response = json_decode($response, true);
+        return true;
+    } catch (\Exception $e) {
+        echo "Something went wrong, money not deposited." . $e;
+    }
+};
 
 isValidDate();
