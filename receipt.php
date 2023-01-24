@@ -12,7 +12,7 @@ $vacation = [
   "departure_date" => $_SESSION["departure"],
   "total_cost" => $_SESSION["totalAmount"],
   "stars" => "1",
-  "addtional_info" => "Thank you for staying at the Yellow Duck!"
+  "additional_info" => "Thank you for staying at the Yellow Duck!"
 ];
 
 $receipt = json_encode($vacation);

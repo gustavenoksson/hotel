@@ -34,3 +34,21 @@ const calcPrice = () => {
 form.addEventListener('change', () => {
   calcPrice();
 });
+
+/* Buttons to reveal logbook and factbox /AB */
+const logbookBtn = document.querySelector('.logbookBtn');
+const revenueBtn = document.querySelector('.revenueBtn');
+
+const logbook = document.querySelector('.cards');
+const revenue = document.querySelector('.factBox');
+
+
+logbookBtn.addEventListener('click', function(){
+  logbook.classList.toggle('invisible');
+  revenue.classList.add('invisible');
+})
+
+revenueBtn.addEventListener('click', function(){
+  revenue.classList.toggle('invisible');
+  logbook.classList.add('invisible');
+})

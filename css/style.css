@@ -177,3 +177,99 @@ footer p {
   color: var(--font-color-red);
   font-size: 18px;
 }
+/* Info section */
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.logbookBtn, .revenueBtn {
+  width: 10rem;
+  height: 4rem;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: var(--font-color-red);
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: var(--font-color-white);
+  font-family: 'Acme', sans-serif;
+  transition: 1s ease;
+}
+
+.logbookBtn:hover, .revenueBtn:hover{
+  scale: 1.03;
+}
+/* Styling for Logbook cards */
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.card {
+  width: 40rem;
+  height: auto;
+  padding: 2rem;
+  margin: 2rem;
+  background-color: var(--background-color-yellow);
+  color: var(--font-color-red);
+  border-radius: 12px;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* Styling for Factbox */
+.factBox h2 {
+  grid-area: fact-header;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.factBox h3 {
+  margin-bottom: 1rem;
+}
+
+.revenueBooking {
+  grid-area: revenue-booking;
+}
+
+.totalRevenue {
+  grid-area: total-revenue;
+}
+
+.factbox {
+  display: grid;
+  grid-template-columns: 20rem 20rem;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "fact-header fact-header"
+    "revenue-booking total-revenue"
+    "revenue-booking total-revenue";
+  justify-content: center;
+  justify-items: stretch;
+  background-color: var(--background-color-yellow);
+  color: var(--font-color-red);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+ul {
+  width: 20rem;
+  height: auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  line-height: 2rem;
+}
+
+.invisible {
+  display: none;
+}
