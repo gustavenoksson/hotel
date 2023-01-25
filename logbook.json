@@ -17,7 +17,7 @@
     "arrival_date": "2023-01-23",
     "departure_date": "2023-01-27",
     "total_cost": 3,
-    "stars": "3",
+    "stars": 3,
     "features": [],
     "additional_info": "Thank you for staying at this very average hotel."
   },
@@ -26,44 +26,41 @@
     "island": "BO-BO-ISLAND",
     "hotel": "BO-BO HOTEL",
     "name": "Gustav",
-    "arrival": "2023-01-05",
-    "departure": "2023-01-11",
-    "total_fee": 6,
-    "stars": "1",
-    "features": "",
+    "arrival_date": "2023-01-05",
+    "departure_date": "2023-01-11",
+    "total_cost": 6,
+    "stars": 1,
+    "features": [],
     "additional_info": "See You Soon!"
   },
 
-  [
-    {
-      "island": "Eldoon Isle",
-      "hotel": "Itsakon Hotel",
-      "arrival_date": "2023-01-5",
-      "departure_date": "2023-01-6",
-      "total_cost": "22",
-      "stars": 4,
-      "features": {
-        "1": {
-          "name": "Megafridge",
-          "cost": "2"
-        },
-        "2": {
-          "name": "Afternoon Breakfast",
-          "cost": "2"
-        },
-        "3": {
-          "name": "Midnight Lunch",
-          "cost": "2"
-        },
-        "4": {
-          "name": "Soy Dinner",
-          "cost": "2"
-        }
+  {
+    "island": "Eldoon Isle",
+    "hotel": "Itsakon Hotel",
+    "arrival_date": "2023-01-5",
+    "departure_date": "2023-01-6",
+    "total_cost": 22,
+    "stars": 4,
+    "features": [
+      {
+        "name": "Megafridge",
+        "cost": 2
       },
-      "addtional_info": "Thanks for staying at Itsakon Hotel"
-    }
-  ],
-
+      {
+        "name": "Afternoon Breakfast",
+        "cost": 2
+      },
+      {
+        "name": "Midnight Lunch",
+        "cost": 2
+      },
+      {
+        "name": "Soy Dinner",
+        "cost": 2
+      }
+    ],
+    "additional_info": "Thanks for staying at Itsakon Hotel"
+  },
   {
     "island": "Glacier Island",
     "hotel": "Neversummer hotel",
@@ -71,7 +68,7 @@
     "departure_date": "2023-01-11",
     "total_cost": 20,
     "stars": 5,
-    "features": [
+    "features":
       [
         {
           "name": "Ski Rental",
@@ -86,7 +83,7 @@
           "cost": 5
         }
       ]
-    ],
+    ,
     "additional_info": "You saved $2 with discounts"
   },
 
@@ -96,8 +93,8 @@
     "arrival_date": "2023-01-23",
     "departure_date": "2023-01-26",
     "total_cost": 2,
-    "stars": "2",
-    "features": null,
+    "stars": 2,
+    "features": [],
     "additional_info": "Thank you for choosing Overwater Resort."
   },
 
@@ -106,13 +103,15 @@
     "hotel": "Island Oasis Inn",
     "arrival_date": "2023-01-13",
     "departure_date": "2023-01-18",
-    "total_cost": "16.20",
+    "total_cost": 16.20,
     "room_type": "budget",
     "stars": 5,
-    "features": {
+    "features": [
+      {
       "name": "butler, breakfast, massage",
-      "cost": "5.40"
-    },
+      "cost": 5.40
+    }
+  ],
     "additional_info": "https://www.youtube.com/watch?v=6x-JVXkd8SQ"
   },
 
@@ -121,49 +120,25 @@
     "hotel": "Dino Resort",
     "arrival_date": "2023-01-09",
     "departure_date": "2023-01-12",
-    "total_cost": "9",
-    "features": null,
-    "stars": "1",
-    "addtional_info": "At least Ruben, the hotel owner, had a blast this Christmas."
+    "total_cost": 9,
+    "features": [],
+    "stars": 1,
+    "additional_info": "At least Ruben, the hotel owner, had a blast this Christmas."
   },
 
-  {
-    "island": "Nomi island",
-    "hotel": "Nomis Hotel",
-    "arrival_date": "2023-01-16",
-    "departure_date": "2023-01-22",
-    "total_cost": 33,
-    "stars": "5",
-    "features": [
-      {
-        "sauna": true,
-        "cost": 2
-      },
-      {
-        "Island_tour": true,
-        "cost": 4
-      },
-      {
-        "extra_bed": true,
-        "cost": 4
-      }
-    ],
-    "addtional_info": {
-      "greeting": "Thanks for choosing Nomis!"
-    }
-  },
+
 
   {
     "island": "Space Shuttle Island",
     "hotel": "Groundbreaker",
     "arrival_date": "2023-01-19",
     "departure_date": "2023-01-22",
-    "total_cost": "15",
-    "stars": "3",
-    "features": {
+    "total_cost": 15,
+    "stars": 3,
+    "features": [{
       "name": "1,2",
       "cost": 8
-    },
+    }],
     "additional_info": "Thank you for chosing the hotel among the stars!"
   },
 
@@ -173,7 +148,7 @@
     "arrival_date": "2023-01-13",
     "departure_date": "2023-01-17",
     "total_cost": 24,
-    "stars": "3",
+    "stars": 3,
     "features": [
       {
         "name": "breakfast",
@@ -209,8 +184,8 @@
     "arrival_date": "2023-01-20",
     "departure_date": "2023-01-23",
     "total_cost": 5,
-    "stars": "2",
-    "features": null,
+    "stars": 2,
+    "features": [],
     "additional_info": "Thank you for choosing Overwater Resort."
   },
 
@@ -220,7 +195,7 @@
     "arrival_date": "2023-01-08",
     "departure_date": "2023-01-11",
     "total_cost": 7,
-    "stars": "3",
+    "stars": 3,
     "features": [
       {
         "name": "baseballbat",
@@ -234,11 +209,11 @@
     "island": "BO-BO-ISLAND",
     "hotel": "BO-BO HOTEL",
     "name": "Gustav",
-    "arrival": "2023-01-26",
-    "departure": "2023-01-27",
-    "total_fee": 1,
-    "stars": "1",
-    "features": "",
+    "arrival_date": "2023-01-26",
+    "departure_date": "2023-01-27",
+    "total_cost": 1,
+    "stars": 1,
+    "features": [],
     "additional_info": "See You Soon!"
   }
 ]
